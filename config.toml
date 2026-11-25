@@ -1,0 +1,4 @@
+[functions.api]
+# The function currently exposes only public health and plan metadata.
+# Add authentication and authorization before implementing private API routes.
+verify_jwt = false
