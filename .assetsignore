@@ -1,0 +1,12 @@
+# Server-side source and deployment metadata must never be public assets.
+backend/**
+supabase/**
+.github/**
+.git/**
+node_modules/**
+.wrangler/**
+README.md
+wrangler.toml
+.assetsignore
+.env
+.env.*

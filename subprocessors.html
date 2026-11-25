@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Disclosures about zavoka AI subprocessors, third-party services, and international data processing.">
+  <link rel="canonical" href="https://zavoka.com/subprocessors.html">
+  <title>Subprocessors &amp; Third-Party Services — zavoka AI</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav"><div class="container nav-inner"><a class="brand" href="index.html">zavok<span class="logo-final-a">a</span></a></div></header>
+  <main class="section simple-page legal-page">
+    <div class="container legal-content">
+      <span class="eyebrow">LEGAL</span>
+      <h1>Subprocessor &amp; Third-Party Services Disclosure</h1>
+      <p class="legal-updated"><strong>Last updated: September 29, 2026</strong></p>
+      <p>This notice identifies third-party services and service categories that may support zavoka AI. The exact providers enabled depend on the deployed configuration and features used. It should be read with the <a href="privacy.html">Privacy Policy</a> and <a href="dpa.html">Data Processing Agreement</a>.</p>
+
+      <h2>Providers and purposes</h2>
+      <ul>
+        <li><strong>Shopify:</strong> store authorization, product/catalog data, checkout, orders, fulfillment, and app functions requested by the merchant. Shopify is an independent platform and may separately process information under its own terms.</li>
+        <li><strong>OpenAI:</strong> AI model processing of conversation prompts and relevant store context when AI features are enabled and configured with OpenAI credentials.</li>
+        <li><strong>Stripe:</strong> subscription checkout, payment processing, and billing events when Stripe is configured. Payment card information is collected and processed by Stripe rather than stored by zavoka.</li>
+        <li><strong>Resend:</strong> email delivery for service messages and merchant-enabled cart-recovery messages when configured. Cart recovery is subject to Shopify consent signals and merchant settings.</li>
+        <li><strong>MongoDB:</strong> database storage for merchant, catalog, conversation, checkout, order, analytics, and service records, depending on enabled features.</li>
+        <li><strong>Google Cloud (Cloud Run):</strong> backend application hosting and runtime infrastructure. Requests and operational data needed to run, secure, and troubleshoot the API may be processed by Google Cloud. The deployed Cloud Run region and logging configuration determine relevant processing locations and retention; confirm these in the production project.</li>
+        <li><strong>Website hosting and content delivery:</strong> the public website hosting provider is configured separately from the Cloud Run API and may receive request and technical data needed to deliver the site.</li>
+        <li><strong>Google Fonts:</strong> the website stylesheet requests font resources from Google Fonts, which may receive technical connection information such as IP address and browser request data.</li>
+        <li><strong>ExchangeRate-API:</strong> the website may request current currency-conversion rates from its public API endpoint. The provider may receive technical request information such as IP address and browser/network data; currency conversion is indicative and does not determine Stripe’s billing currency.</li>
+      </ul>
+
+      <h2>United States and international processing</h2>
+      <p>Some listed providers are US-based or may process/store data in the United States; services may also use infrastructure in other countries. Shopify is headquartered in Canada, so we do not represent that every third-party service is US-headquartered. Provider corporate headquarters do not by themselves determine where data is stored or accessed. Actual processing locations depend on the provider's product, account configuration, and current terms.</p>
+      <p>Where applicable law restricts international transfers, zavoka and the merchant must use an appropriate transfer mechanism and safeguards. Merchants are responsible for assessing whether their use of the Service, provider locations, and transfers meet their legal obligations; zavoka remains responsible for its own obligations as processor or controller under applicable law and the parties' agreement. See our <a href="dpa.html">DPA</a> for transfer provisions.</p>
+
+      <h2>Provider terms and changes</h2>
+      <p>Each provider may process data under its own terms, privacy notice, and security practices. We do not control independent third-party platforms and cannot guarantee their availability or practices. We will update this page when the material provider categories change and provide any notice required by the DPA or applicable law. Contact us to ask about a provider used for your store.</p>
+
+      <h2>Merchant responsibilities</h2>
+      <p>Merchants should review provider documentation, configure integrations and data permissions appropriately, disclose relevant processing to their customers, and determine whether additional consent, transfer safeguards, or contractual terms are required for their business and locations. Do not send sensitive personal information to an AI provider unless the feature and a written agreement expressly permit it.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about subprocessors or data locations? Contact <a href="mailto:contact@zavoka.com">contact@zavoka.com</a>.</p>
+      <p><strong>Service operator:</strong> ZAVOKA. <strong>Registered address:</strong> Todermal Fort, Daraga, Prayag, Uttar Pradesh, India. <strong>Corporate office:</strong> 42, MG Road, Prayag, Uttar Pradesh, India.</p>
+      <p class="legal-note">ZAVOKA is the service operator. The providers listed above are separate third-party services, not the legal entity operating zavoka AI. Conditional integrations may not be enabled for every merchant; the production configuration determines which providers process data. Keep this disclosure aligned with deployed integrations and hosting locations.</p>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-column"><h3>Legal</h3><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a><a href="cookies.html">Cookie Policy</a><a href="refunds.html">Refund &amp; Cancellation</a><a href="dpa.html">Data Processing Agreement</a><a href="subprocessors.html" aria-current="page">Subprocessors</a><a href="do-not-sell.html">Do Not Sell or Share</a></div></div></footer>
+  <script src="js/site-protection.js"></script>
+  <script src="js/site-chrome.js"></script>
+</body>
+</html>
