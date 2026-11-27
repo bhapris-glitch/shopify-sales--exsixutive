@@ -10,17 +10,19 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname.startsWith("/api/")) {
-      if (!env.SUPABASE_URL || !env.SUPABASE_ANON_KEY) {
-        return json({ error: "The Supabase API is not configured." }, 503);
+      const supabaseUrl = String(env.SUPABASE_URL || "").trim();
+      const supabaseKey = String(env.SUPABASE_ANON_KEY || "").trim();
+      if (!supabaseUrl || supabaseUrl.includes("YOUR_PROJECT_REF") || !supabaseKey) {
+        return json({ error: "The Supabase API is not configured.", code: "SUPABASE_NOT_CONFIGURED" }, 503);
       }
 
       const functionUrl = new URL(
         `/functions/v1/api${url.pathname.slice("/api".length)}${url.search}`,
-        env.SUPABASE_URL,
+        supabaseUrl,
       );
       const headers = new Headers(request.headers);
-      headers.set("apikey", env.SUPABASE_ANON_KEY);
-      headers.set("authorization", `Bearer ${env.SUPABASE_ANON_KEY}`);
+      headers.set("apikey", supabaseKey);
+      headers.set("authorization", `Bearer ${supabaseKey}`);
 
       return fetch(functionUrl, {
         method: request.method,
