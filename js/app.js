@@ -46,7 +46,7 @@ if(form) form.addEventListener('submit',async event=>{
     const body=selectedPlan?{plan:selectedPlan,email,merchantId:localStorage.getItem('lbMerchantId')||''}:{shop,email};
     const response=await fetch(`${API_BASE}${endpoint}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const data=await response.json().catch(()=>({}));
-    if(!response.ok){const error=new Error(data.error||`Unable to continue (HTTP ${response.status})`);error.code=data.code;throw error;}
+    if(!response.ok){const error=new Error(data.error||`Unable to continue (HTTP ${response.status})`);error.code=data.code;error.status=response.status;throw error;}
     if(data.merchantId) localStorage.setItem('lbMerchantId',data.merchantId);
     if(data.session) localStorage.setItem('lbMerchantSession',data.session);
     if(selectedPlan){
@@ -58,8 +58,10 @@ if(form) form.addEventListener('submit',async event=>{
     if(data.installUrl) window.location.href=data.installUrl;
   }catch(error){
     status.textContent=error.code==='SUPABASE_NOT_CONFIGURED'
-      ? 'Store installation is unavailable: the site administrator must configure the Supabase connection. The /api/install endpoint also needs to be implemented in the deployed Supabase function.'
-      : error.message+' You can try again or contact support.';
+      ? 'Installation is unavailable because the deployed Cloudflare Worker is missing its Supabase configuration. Deploy the updated Worker settings and try again.'
+      : error.status===501
+        ? 'The Supabase connection is configured, but the store installation API has not yet been implemented in the deployed function.'
+        : error.message+' You can try again or contact support.';
   }
 });
 
