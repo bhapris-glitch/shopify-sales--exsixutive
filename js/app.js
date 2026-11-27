@@ -46,7 +46,7 @@ if(form) form.addEventListener('submit',async event=>{
     const body=selectedPlan?{plan:selectedPlan,email,merchantId:localStorage.getItem('lbMerchantId')||''}:{shop,email};
     const response=await fetch(`${API_BASE}${endpoint}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const data=await response.json().catch(()=>({}));
-    if(!response.ok) throw new Error(data.error||`Unable to continue (HTTP ${response.status})`);
+    if(!response.ok){const error=new Error(data.error||`Unable to continue (HTTP ${response.status})`);error.code=data.code;throw error;}
     if(data.merchantId) localStorage.setItem('lbMerchantId',data.merchantId);
     if(data.session) localStorage.setItem('lbMerchantSession',data.session);
     if(selectedPlan){
@@ -56,7 +56,11 @@ if(form) form.addEventListener('submit',async event=>{
     }
     status.innerHTML=`<strong>Trial ready.</strong> ${data.message||'Continue to Shopify to connect your store.'}`;
     if(data.installUrl) window.location.href=data.installUrl;
-  }catch(error){status.textContent=error.message+' You can try again or contact support.';}
+  }catch(error){
+    status.textContent=error.code==='SUPABASE_NOT_CONFIGURED'
+      ? 'Store installation is unavailable: the site administrator must configure the Supabase connection. The /api/install endpoint also needs to be implemented in the deployed Supabase function.'
+      : error.message+' You can try again or contact support.';
+  }
 });
 
 const loginPanel=document.getElementById('merchant-login');
